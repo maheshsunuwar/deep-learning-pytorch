@@ -5,5 +5,5 @@ Following [Zero to Mastery: Learn PyTorch for Deep Learning](https://www.learnpy
 **Done**
 1. 00. PyTorch Fundamentals
 
-**Progress**
+**WIP**
 1. PyTorch Workflow Fundamentals
