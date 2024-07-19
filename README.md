@@ -3,8 +3,9 @@
 Following [Zero to Mastery: Learn PyTorch for Deep Learning](https://www.learnpytorch.io/00_pytorch_fundamentals/) 
 
 **Done**
-1. `00. PyTorch Fundamentals`
-2. `01. PyTorch Workflow Fundamentals`
+- [x] `00. PyTorch Fundamentals`
+- [x] `01. PyTorch Workflow Fundamentals`
+- [x] `02. PyTorch Neural Network Classification`
 
 **WIP**
-1. `02. PyTorch Neural Network Classification`
+- [ ] `03. PyTorch Computer Vision`
