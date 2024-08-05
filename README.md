@@ -7,6 +7,7 @@ Following [Zero to Mastery: Learn PyTorch for Deep Learning](https://www.learnpy
 - [x] `01. PyTorch Workflow Fundamentals`
 - [x] `02. PyTorch Neural Network Classification`
 - [x] `03. PyTorch Computer Vision`
+- [x] `04. PyTorch Custom Datasets`
 
 **WIP**
-- [ ] `PyTorch Custom Datasets`
+- [ ] `05. PyTorch Going Modular`
