@@ -35,13 +35,14 @@ class TinyVGG(nn.Module):
 
         self.classifier = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(in_features=hidden_units*13*13, 
+            nn.Linear(in_features=hidden_units*14*14, 
                       out_features=output_shape)
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.conv_block_1(x)
         x = self.conv_block_2(x)
+        # print(x.shape)
         x = self.classifier(x)
 
         return x
