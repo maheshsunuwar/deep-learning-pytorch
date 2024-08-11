@@ -26,7 +26,7 @@ def create_dataloaders(
     test_data = datasets.ImageFolder(test_dir, transform=transform)
 
     # get class names
-    class_names = train_data.class_names
+    class_names = train_data.classes
 
     # data loaders
     train_dataloader = DataLoader(dataset=train_data,
