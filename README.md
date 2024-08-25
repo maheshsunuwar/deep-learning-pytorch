@@ -10,6 +10,7 @@ Following [Zero to Mastery: Learn PyTorch for Deep Learning](https://www.learnpy
 - [x] `04. PyTorch Custom Datasets`
 - [x] `05. PyTorch Going Modular`
 - [x] `06. PyTorch Transfer Learning`
+- [x] `07. PyTorch Experiment Tracking`
 
 **WIP**
-- [ ] 07. PyTorch Experiment Tracking
+- [ ] `08. PyTorch Paper Replicating`
