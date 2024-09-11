@@ -14,3 +14,6 @@ Following [Zero to Mastery: Learn PyTorch for Deep Learning](https://www.learnpy
 
 **WIP**
 - [ ] `08. PyTorch Paper Replicating`
+
+**Next**
+- [ ] `09. PyTorch Model Deployment`
