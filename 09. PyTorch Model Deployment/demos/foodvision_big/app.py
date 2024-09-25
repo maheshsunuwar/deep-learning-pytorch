@@ -1,32 +1,34 @@
-### imports and class names setup
+### 1. Imports and class names setup ### 
 import gradio as gr
 import os
 import torch
 
 from model import create_effnetb2_model
 from timeit import default_timer as timer
-from typings import Tuple, Dict
+from typing import Tuple, Dict
 
-
-# setup class names
+# Setup class names
 with open("class_names.txt", "r") as f: # reading them in from class_names.txt
     class_names = [food_name.strip() for food_name in  f.readlines()]
+    
+### 2. Model and transforms preparation ###    
 
-# model ans transforms preparation
+# Create model
+effnetb2, effnetb2_transforms = create_effnetb2_model(
+    num_classes=101, # could also use len(class_names)
+)
 
-# create model
-effnetb2, effnetb2_transforms = create_effnetb2_model(num_classes=101)
-
-# load saved weights
+# Load saved weights
 effnetb2.load_state_dict(
     torch.load(
-        f='09_pretrained_effnetb2_feature_extractor_food101_20_percent.pth',
-        map_location=torch.device('cpu') # load to cpu 
+        f="09_pretrained_effnetb2_feature_extractor_food101_20_percent_fastermachine.pth",
+        map_location=torch.device("cpu"),  # load to CPU
     )
 )
 
-# predict function
-# create predict function
+### 3. Predict function ###
+
+# Create predict function
 def predict(img) -> Tuple[Dict, float]:
     """Transforms and performs a prediction on img and returns prediction and time taken.
     """
@@ -34,7 +36,7 @@ def predict(img) -> Tuple[Dict, float]:
     start_time = timer()
     
     # Transform the target image and add a batch dimension
-    img = effnetb2_transforms(img).unsqueeze(dim=0)
+    img = effnetb2_transforms(img).unsqueeze(0)
     
     # Put model into evaluation mode and turn on inference mode
     effnetb2.eval()
@@ -45,16 +47,13 @@ def predict(img) -> Tuple[Dict, float]:
     # Create a prediction label and prediction probability dictionary for each prediction class (this is the required format for Gradio's output parameter)
     pred_labels_and_probs = {class_names[i]: float(pred_probs[0][i]) for i in range(len(class_names))}
     
-    # end timer
-    end_time = timer()
-    
     # Calculate the prediction time
-    pred_time = round(end_time - start_time, 5)
-
-    # return the prediction dictionary and prediction time
+    pred_time = round(timer() - start_time, 5)
+    
+    # Return the prediction dictionary and prediction time 
     return pred_labels_and_probs, pred_time
 
-### Gradio app ###
+### 4. Gradio app ###
 
 # Create title, description and article strings
 title = "FoodVision Big 🍔👁"
@@ -62,7 +61,7 @@ description = "An EfficientNetB2 feature extractor computer vision model to clas
 article = "Created at [09. PyTorch Model Deployment](https://www.learnpytorch.io/09_pytorch_model_deployment/)."
 
 # Create examples list from "examples/" directory
-example_list = [f'examples/{example}'] for example in os.listdir("examples")]
+example_list = [["examples/" + example] for example in os.listdir("examples")]
 
 # Create Gradio interface 
 demo = gr.Interface(
@@ -78,5 +77,5 @@ demo = gr.Interface(
     article=article,
 )
 
-# launch the app
+# Launch the app!
 demo.launch()
