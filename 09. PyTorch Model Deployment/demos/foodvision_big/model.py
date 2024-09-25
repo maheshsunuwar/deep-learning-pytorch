@@ -1,5 +1,5 @@
 import torch
-import torchvisoin
+import torchvision
 
 from torch import nn
 
