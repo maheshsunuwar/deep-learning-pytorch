@@ -11,9 +11,9 @@ Following [Zero to Mastery: Learn PyTorch for Deep Learning](https://www.learnpy
 - [x] `05. PyTorch Going Modular`
 - [x] `06. PyTorch Transfer Learning`
 - [x] `07. PyTorch Experiment Tracking`
-- [ ] `08. PyTorch Paper Replicating`
+- [x] `08. PyTorch Paper Replicating`
+- [x] `09. PyTorch Model Deployment`
 
 **WIP**
-- [ ] `09. PyTorch Model Deployment`
 
 **Next**
